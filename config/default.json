@@ -1,3 +1,9 @@
 {
-  "port": 3000
+  "port": 3000,
+  "uberConfig": {
+    "serverToken": "rXFtyR-_8FnRpknNVFkDlkb1Psi_B-bdVa2mD_Pf",
+    "urls": {
+      "baseUrl": "https://api.uber.com/v1.2"
+    }
+  }
 }

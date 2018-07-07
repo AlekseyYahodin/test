@@ -14,14 +14,44 @@
     }
   },
   "paths": {
-    "/test/": {
+    "/uber/price": {
       "get": {
-        "description": "Test",
-        "tags": [ "Test" ],
+        "description": "Get prive from uber",
+        "tags": [ "Uber" ],
         "produces": [ "application/json" ],
+        "parameters": [
+          {
+            "name": "startLatitude",
+            "description": "Start latitude",
+            "in": "query",
+            "default": "37.7752315",
+            "required": true
+          },
+          {
+            "name": "startLongitude",
+            "description": "Start longitude",
+            "in": "query",
+            "default": "-122.418075",
+            "required": true
+          },
+          {
+            "name": "endLatitude",
+            "description": "StartlLatitude",
+            "in": "query",
+            "default": "37.7752415",
+            "required": true
+          },
+          {
+            "name": "endLongitude",
+            "description": "Start longitude",
+            "in": "query",
+            "default": "-122.518075",
+            "required": true
+          }
+        ],
         "responses": {
           "200": {
-            "description": "Test"
+            "description": "Response"
           },
           "500": {
             "description": "Internal server error"
