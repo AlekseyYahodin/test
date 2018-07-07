@@ -10,12 +10,14 @@
   <body onload="initialize()">
     <table>
       <tr>
-        <th><label>Start address</label></th>
-        <th><input id="startAddressInput" type="text"></th>
+        <td><label>Start address</label></td>
+        <td><input id="startAddressInput" type="text"></td>
+        <td id="formattedStartAddress"></td>
       </tr>
       <tr>
-          <th><label>Destination address</label></th>
-          <th><input id="destinationAddressInput" type="text"></th>
+          <td><label>Destination address</label></td>
+          <td><input id="destinationAddressInput" type="text"></td>
+          <td id="formattedDestinationAddress"></td>
       </tr>
     </table>
     <button onclick="submit()">Submit!</button>

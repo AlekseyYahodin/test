@@ -1,4 +1,5 @@
 const BaseHttpAccessor = require('./baseHttpAccessor');
+const DistanceExceedsError = require('../errors/distanceExceeds.error');
 const config = require('config');
 
 class UberAccessor extends BaseHttpAccessor {
@@ -24,8 +25,16 @@ class UberAccessor extends BaseHttpAccessor {
       end_longitude: endLongitude
     }
 
-    const response = await this.get(url, query, headers);
-    return response.prices;
+    try {
+      const response = await this.get(url, query, headers);
+      return response.prices;
+    } catch (error) {
+      if (error.statusCode = 422) {
+        throw new DistanceExceedsError(error.response.body.message);
+      }
+
+      throw error;
+    }
   }
 }
 

@@ -21,6 +21,12 @@ async function submit() {
     endLatitude = destinationAddressInfo.latitude;
     endLongitude = destinationAddressInfo.longitude
 
+    $('#formattedStartAddress').empty();
+    $('#formattedStartAddress').append(startAddressInfo.formattedAddress);
+
+    $('#formattedDestinationAddress').empty();
+    $('#formattedDestinationAddress').append(destinationAddressInfo.formattedAddress);
+
     await getPrices(startLatitude, startLongitude, endLatitude, endLongitude);
   }
 }
@@ -29,10 +35,11 @@ async function getCoorinates(address, addressType) {
   return new Promise((resolve, reject) => {
     geocoder.geocode( { 'address': address}, (results, status) => {
       if (status == google.maps.GeocoderStatus.OK) {
-        let latitude = results[0].geometry.location.lat();
-        let longitude = results[0].geometry.location.lng();
+        const latitude = results[0].geometry.location.lat();
+        const longitude = results[0].geometry.location.lng();
+        const formattedAddress = results[0].formatted_address;
 
-        resolve({ latitude, longitude });
+        resolve({ latitude, longitude, formattedAddress });
       } else if (status == google.maps.GeocoderStatus.ZERO_RESULTS) {
         alert(`No ${addressType} was found: ${address}`);
         resolve();
@@ -50,5 +57,9 @@ async function getPrices(startLatitude, startLongitude, endLatitude, endLongitud
     result.forEach((service) => {
       $('#resultTable').append(`<tr><td>${service.name}</td><td>${service.price}</td></tr>`);
     });
+  })
+  .fail((errorResponse) => {
+    alert(JSON.stringify(errorResponse.responseJSON.message || 'Error'));
+    $('#resultTable').empty();
   });
 }
