@@ -1,0 +1,13 @@
+#resultTable {
+  border-collapse: separate;
+  border-spacing: 0px;
+}
+
+#resultTable th {
+  border: 1px solid black;
+  width: 200px
+}
+
+#resultTable td {
+  border: 1px solid black;
+}

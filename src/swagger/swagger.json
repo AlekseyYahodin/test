@@ -51,7 +51,18 @@
         ],
         "responses": {
           "200": {
-            "description": "Response"
+            "description": "Response",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "price": {
+                  "type": "string"
+                }
+              }
+            }
           },
           "500": {
             "description": "Internal server error"

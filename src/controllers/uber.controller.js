@@ -7,7 +7,7 @@ const uberService = new UberService();
 
 router.get('/price', coordinatesValidation, async (req, res) => {
   const { startLatitude, startLongitude, endLatitude, endLongitude } = req.query;
-  const response = await uberService.getPrice(startLatitude, startLongitude, endLatitude, endLongitude);
+  const response = await uberService.getPrices(startLatitude, startLongitude, endLatitude, endLongitude);
   res.json(response);
 });
 

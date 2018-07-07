@@ -7,7 +7,7 @@ class UberAccessor extends BaseHttpAccessor {
     this.config = config.uberConfig;
   }
 
-  async getPrice(startLatitude, startLongitude, endLatitude, endLongitude) {
+  async getPrices(startLatitude, startLongitude, endLatitude, endLongitude) {
     const serverToken = this.config.serverToken;
     const baseUrl = this.config.urls.baseUrl;
     const url = `${baseUrl}/estimates/price`;
@@ -25,7 +25,7 @@ class UberAccessor extends BaseHttpAccessor {
     }
 
     const response = await this.get(url, query, headers);
-    return response;
+    return response.prices;
   }
 }
 
